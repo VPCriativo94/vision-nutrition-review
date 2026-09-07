@@ -506,6 +506,16 @@ img[data-optional].loaded { display: block; }
 .price .per { font-size: 14px; color: var(--muted); margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
 .price ul { font-size: 14.5px; padding: 0; margin: 0; list-style: none; }
 .price li { margin-bottom: 10px; padding-left: 26px; position: relative; line-height: 1.45; color: var(--ink-2); }
+/* Link de escolha do pacote. É link de texto, não botão laranja —
+   os únicos três botões laranja da página são topo, meio e rodapé. */
+.price-pick {
+  display: inline-block; margin-top: 20px;
+  font-family: var(--display); font-weight: 700; font-size: 15px;
+  color: var(--brand); text-decoration: none;
+  border-bottom: 2px solid var(--brand-soft); padding-bottom: 3px;
+  transition: border-color .15s;
+}
+.price-pick:hover, .price-pick:focus { border-bottom-color: var(--brand); }
 .price li::before {
   content: ""; position: absolute; left: 0; top: 6px;
   width: 15px; height: 8px; border-left: 2.5px solid var(--brand-mid); border-bottom: 2.5px solid var(--brand-mid);

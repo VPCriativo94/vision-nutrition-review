@@ -105,8 +105,8 @@
         difference &mdash; and a five-point checklist for any label.</p>
 
         <div class="hero-actions">
-          <a class="btn" data-aff href="https://clearvisionbreakthrough.com/tsl.php#aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">
-            See the formula &amp; pricing <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+          <a class="btn" data-aff data-pack="6-meses" href="https://www.digistore24.com/product/454005?aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">
+            Order the 6-month supply <svg aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
         </div>
 
@@ -625,10 +625,11 @@
         <li><svg aria-hidden="true"><use href="#i-box"/></svg> 12 ingredients</li>
         <li><svg aria-hidden="true"><use href="#i-clock"/></svg> 2 capsules a day</li>
       </ul>
-      <a class="btn" data-aff href="https://clearvisionbreakthrough.com/tsl.php#aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">
-        See the formula &amp; pricing <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+      <a class="btn" data-aff data-pack="6-meses" href="https://www.digistore24.com/product/454005?aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">
+        Order the 6-month supply <svg aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
-      <p class="fineprint">Opens the manufacturer's official page in a new tab.</p>
+      <p class="fineprint">Opens the secure checkout in a new tab. Prefer a smaller quantity?
+      Pick a package below.</p>
     </div>
   </div>
 </section>
@@ -708,6 +709,7 @@
           <li>Trial quantity</li>
           <li>180-day guarantee</li>
         </ul>
+        <a class="price-pick" data-aff data-pack="1-mes" href="https://www.digistore24.com/product/454003?aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">Choose this package &rarr;</a>
       </div>
 
       <div class="price best">
@@ -721,6 +723,7 @@
           <li>Bonus items included</li>
           <li>180-day guarantee</li>
         </ul>
+        <a class="price-pick" data-aff data-pack="6-meses" href="https://www.digistore24.com/product/454005?aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">Choose this package &rarr;</a>
       </div>
 
       <div class="price">
@@ -732,6 +735,7 @@
           <li>Minimum sensible trial</li>
           <li>180-day guarantee</li>
         </ul>
+        <a class="price-pick" data-aff data-pack="3-meses" href="https://www.digistore24.com/product/454004?aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">Choose this package &rarr;</a>
       </div>
     </div>
 
@@ -823,8 +827,8 @@
         <li><svg aria-hidden="true"><use href="#i-shield"/></svg> 180-day money-back guarantee</li>
         <li><svg aria-hidden="true"><use href="#i-box"/></svg> Sold direct, not in stores</li>
       </ul>
-      <a class="btn" data-aff href="https://clearvisionbreakthrough.com/tsl.php#aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">
-        See iGenics &mdash; formula, pricing, guarantee <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+      <a class="btn" data-aff data-pack="6-meses" href="https://www.digistore24.com/product/454005?aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">
+        Order iGenics now <svg aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
     </div>
   </div>
@@ -868,25 +872,46 @@
 
 <script>
 /* =====================================================================
-   CONFIGURAÇÃO - ÚNICO LUGAR PARA TROCAR O LINK DE AFILIADO
-   Troque a linha abaixo e todos os botões passam a usar o novo link.
-   Os botões já trazem o link no HTML como reserva (visitante com
-   JavaScript desligado), então troque também no HTML com "localizar e
-   substituir" para os dois ficarem iguais.
+   CONFIGURAÇÃO - ÚNICO LUGAR PARA MEXER NOS LINKS DE COMPRA
+   ---------------------------------------------------------------------
+   Os botões vão DIRETO para o formulário de pedido do Digistore24, e não
+   mais para a página de vendas do produtor.
+
+   O formato abaixo não foi inventado: foi extraído da própria função
+   digistoreAppendAffiliateToUrl() da página do produtor, que é quem monta
+   o link quando alguém clica em "Add To Cart" lá.
+
+   Para voltar atrás e mandar de novo para a página de vendas, basta
+   trocar PAGINA_DE_VENDAS por true.
    ===================================================================== */
-var AFFILIATE_URL = "https://clearvisionbreakthrough.com/tsl.php#aff=StoreHome94";
+var AFFILIATE_ID = "StoreHome94";
+
+var PRODUTOS = {
+  "1-mes":   "454003",   //  $59  - 1 pote
+  "3-meses": "454004",   // $147  - 3 potes
+  "6-meses": "454005"    // $234  - 6 potes
+};
+
+var PAGINA_DE_VENDAS = false;
+var URL_PAGINA_DE_VENDAS = "https://clearvisionbreakthrough.com/tsl.php#aff=" + AFFILIATE_ID;
+
+function linkDeCompra(pacote) {
+  if (PAGINA_DE_VENDAS) { return URL_PAGINA_DE_VENDAS; }
+  var id = PRODUTOS[pacote] || PRODUTOS["6-meses"];
+  return "https://www.digistore24.com/product/" + id + "?aff=" + AFFILIATE_ID;
+}
 
 (function () {
   "use strict";
 
-  /* ---- links de afiliado + evento de conversão ---- */
+  /* ---- links de compra + evento de conversão ---- */
   Array.prototype.forEach.call(document.querySelectorAll("a[data-aff]"), function (a) {
-    a.setAttribute("href", AFFILIATE_URL);
+    a.setAttribute("href", linkDeCompra(a.getAttribute("data-pack")));
     a.addEventListener("click", function () {
       if (typeof window.gtag === "function") {
         window.gtag("event", "affiliate_click", {
           event_category: "outbound",
-          event_label: "igenics"
+          event_label: a.getAttribute("data-pack") || "6-meses"
         });
       }
     });
