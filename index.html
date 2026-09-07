@@ -658,7 +658,7 @@
            <img src="assets/img/igenics.jpg" alt="iGenics supplement bottle" width="400" height="400">
            =================================================================== -->
       <div>
-        <img data-optional src="assets/img/bottle-1.png" alt="A bottle of iGenics">
+        <img data-optional decoding="async" width="426" height="329" src="assets/img/bottle-1.png" alt="A bottle of iGenics">
         <div class="ps-empty" data-fallback>Foto oficial do produto entra aqui<br>(assets/img/bottle-1.png)</div>
       </div>
 
@@ -681,10 +681,13 @@
          propósito: este site é independente e não pode parecer a página
          oficial da marca. -->
     <figure class="img-slot brand-shot">
-      <img data-optional src="assets/img/banner.jpg"
-           alt="Manufacturer's promotional image for iGenics">
-      <figcaption>Promotional image supplied by the manufacturer. Claims shown in it are the
-      manufacturer's, not ours.</figcaption>
+      <!-- Sem loading="lazy" de proposito: as imagens opcionais ficam com
+           display:none ate carregar, e imagem escondida nunca fica "perto da
+           tela", entao o lazy nunca dispara e a imagem nao aparece nunca. -->
+      <img data-optional decoding="async" width="1200" height="859"
+           src="assets/img/banner.jpg"
+           alt="A bottle of iGenics on a wooden table outdoors">
+      <figcaption>Product photograph supplied by the manufacturer.</figcaption>
     </figure>
 
     <ul class="match" style="margin-top:22px">
@@ -701,7 +704,7 @@
 
     <div class="price-grid">
       <div class="price">
-        <img class="price-shot" data-optional src="assets/img/bottle-1.png" alt="One bottle of iGenics">
+        <img class="price-shot" data-optional decoding="async" width="426" height="329" src="assets/img/bottle-1.png" alt="One bottle of iGenics">
         <div class="tier">1 bottle</div>
         <div class="amt">$59</div>
         <div class="per">30-day supply &middot; $9.99 shipping</div>
@@ -714,7 +717,7 @@
 
       <div class="price best">
         <span class="flag">Best value</span>
-        <img class="price-shot" data-optional src="assets/img/bottle-6.png" alt="Six bottles of iGenics">
+        <img class="price-shot" data-optional decoding="async" width="426" height="329" src="assets/img/bottle-6.png" alt="Six bottles of iGenics">
         <div class="tier">6 bottles</div>
         <div class="amt">$234</div>
         <div class="per">$39 per bottle &middot; free shipping</div>
@@ -727,7 +730,7 @@
       </div>
 
       <div class="price">
-        <img class="price-shot" data-optional src="assets/img/bottle-3.png" alt="Three bottles of iGenics">
+        <img class="price-shot" data-optional decoding="async" width="426" height="329" src="assets/img/bottle-3.png" alt="Three bottles of iGenics">
         <div class="tier">3 bottles</div>
         <div class="amt">$147</div>
         <div class="per">$49 per bottle &middot; free shipping</div>
