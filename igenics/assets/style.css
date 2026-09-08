@@ -178,7 +178,8 @@ img, svg { max-width: 100%; }
 }
 
 /* Compensa a altura do cabecalho sticky quando os botoes rolam ate aqui. */
-#choose { scroll-margin-top: 88px; margin-top: 44px; }
+#choose, #ingredients, #pack-1, #pack-3, #pack-6 { scroll-margin-top: 88px; }
+#choose { margin-top: 44px; }
 
 /* ---------- hero ---------- */
 .hero {
@@ -517,6 +518,10 @@ img[data-optional].loaded { display: block; }
   border-radius: var(--r-lg); padding: 28px 24px; box-shadow: var(--sh-sm);
 }
 .price.best { border: 2px solid var(--brand-mid); box-shadow: var(--sh-lg); }
+/* Destaca o card quando a pessoa chega direto por um link de sitelink do
+   Google Ads (ex.: .../igenics/#pack-3), para ficar obvio que caiu no
+   produto certo, nao so na secao certa. */
+.price:target { border-color: var(--cta); box-shadow: 0 0 0 3px var(--cta) inset, var(--sh-lg); }
 @media (min-width: 760px) { .price.best { transform: scale(1.045); z-index: 2; } }
 .price .flag {
   position: absolute; top: -13px; left: 50%; transform: translateX(-50%);

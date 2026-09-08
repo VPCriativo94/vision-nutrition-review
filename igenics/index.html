@@ -430,7 +430,7 @@
 </section>
 
 <!-- ================= INGREDIENTES ================= -->
-<section class="section section--sand">
+<section class="section section--sand" id="ingredients">
   <div class="wrap--wide">
     <div class="section-head">
       <p class="eyebrow">Beyond the trial</p>
@@ -708,7 +708,7 @@
     guarantee. Prices are set by the manufacturer.</p>
 
     <div class="price-grid">
-      <div class="price">
+      <div class="price" id="pack-1">
         <img class="price-shot" data-optional decoding="async" width="426" height="329" src="assets/img/bottle-1.png" alt="One bottle of iGenics">
         <div class="tier">1 bottle</div>
         <div class="amt">$59</div>
@@ -721,7 +721,7 @@
         <a class="price-pick" data-aff data-pack="1-mes" href="https://www.digistore24.com/product/454003?aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">Choose this package &rarr;</a>
       </div>
 
-      <div class="price best">
+      <div class="price best" id="pack-6">
         <span class="flag">Best value</span>
         <img class="price-shot" data-optional decoding="async" width="426" height="329" src="assets/img/bottle-6.png" alt="Six bottles of iGenics">
         <div class="tier">6 bottles</div>
@@ -737,7 +737,7 @@
         <a class="price-pick" data-aff data-pack="6-meses" href="https://www.digistore24.com/product/454005?aff=StoreHome94" target="_blank" rel="nofollow sponsored noopener">Choose this package &rarr;</a>
       </div>
 
-      <div class="price">
+      <div class="price" id="pack-3">
         <img class="price-shot" data-optional decoding="async" width="426" height="329" src="assets/img/bottle-3.png" alt="Three bottles of iGenics">
         <div class="tier">3 bottles</div>
         <div class="amt">$118</div>
@@ -959,6 +959,30 @@ function linkDeCompra(pacote) {
       img.addEventListener("error", drop);
     }
   });
+
+  /* ---- corrige a rolagem quando alguem chega direto numa ancora ----
+     As fotos opcionais aparecem ou somem depois do carregamento inicial
+     (acima), o que muda a altura da pagina. Se alguem chegou direto num
+     link tipo .../igenics/#pack-3 (sitelink do Google Ads), o navegador
+     ja tentou rolar ate la ANTES dessas fotos se resolverem, e pode
+     parar no lugar errado. Espera todas decidirem (carregaram ou nao
+     existem) e so entao corrige a posicao, uma unica vez. ---- */
+  if (location.hash) {
+    var targetEl = document.querySelector(location.hash);
+    if (targetEl) {
+      var pending = 0;
+      Array.prototype.forEach.call(document.querySelectorAll("img[data-optional]"), function (img) {
+        if (!img.complete) {
+          pending++;
+          function settle() { pending--; if (pending === 0) { fix(); } }
+          img.addEventListener("load", settle);
+          img.addEventListener("error", settle);
+        }
+      });
+      function fix() { setTimeout(function () { targetEl.scrollIntoView(); }, 50); }
+      if (pending === 0) { fix(); } else { setTimeout(fix, 2500); }
+    }
+  }
 
   /* ---- fibras da íris (decorativo) ---- */
   var fibers = document.getElementById("irisFibers");
