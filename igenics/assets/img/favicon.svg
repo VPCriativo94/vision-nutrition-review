@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vision Nutrition Review">
+  <!-- Mesma marca do cabecalho do site: quadrado arredondado verde-agua
+       com o olho em traco. Vetorial, entao fica nitido em qualquer tamanho. -->
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="#e8f5f0" stroke="#b3e5d5" stroke-width="2"/>
+  <g transform="translate(8 8) scale(2)" fill="none" stroke="#0e7c63"
+     stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </g>
+</svg>
