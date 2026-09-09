@@ -27,14 +27,18 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-180.png">
 
-<!-- =====================================================================
-     TAG DE CONVERSÃO DO GOOGLE ADS - COLE AQUI
-     Google Ads > Ferramentas > Conversões > Tag do Google. Cole o bloco
-     <script async src="...googletagmanager.com/gtag/js?id=AW-XXXXXXX"> e o
-     gtag('config', ...) logo abaixo desta linha, nas 5 páginas do site.
-     O clique em qualquer botão de afiliado dispara sozinho o evento
-     'affiliate_click' (ver script no final desta página).
-     ===================================================================== -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17661285188"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17661285188');
+</script>
+<!-- O clique em qualquer botão de pacote dispara o evento 'affiliate_click'
+     (analytics interno) e o evento 'conversion' do Google Ads (ver script
+     no final desta página) — não existe página própria de "obrigado pela
+     compra" porque a venda acontece no site do Digistore24. -->
 
 <script type="application/ld+json">
 {
@@ -928,6 +932,17 @@ function linkDeCompra(pacote) {
         window.gtag("event", "affiliate_click", {
           event_category: "outbound",
           event_label: a.getAttribute("data-pack") || "6-meses"
+        });
+        /* Conversao do Google Ads (Ferramentas > Conversoes > "Visualizacao
+           de pagina"). Nao existe pagina propria de agradecimento -- a venda
+           acontece no site do Digistore24 -- entao o sinal mais honesto que
+           este site consegue observar e o clique no botao do pacote. Como o
+           link abre em nova aba (target="_blank"), esta pagina continua
+           aberta e o evento tem tempo de ser enviado normalmente. */
+        window.gtag("event", "conversion", {
+          send_to: "AW-17661285188/eaPdCJ2Si68bEMSmx-VB",
+          value: 1.0,
+          currency: "BRL"
         });
       }
     });
